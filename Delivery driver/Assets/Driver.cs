@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class NewBehaviourScript : MonoBehaviour
@@ -16,7 +17,9 @@ public class NewBehaviourScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(0, fltmoveSpeed, 0);
-        transform.Rotate(0, 0, fltsteerSpeed);
+        float fltsteerAmount = UnityEngine.Input.GetAxis("Horizontal") * fltsteerSpeed;
+        float fltmoveAmount = UnityEngine.Input.GetAxis("Vertical") * fltmoveSpeed;
+        transform.Translate(0, fltmoveAmount, 0);
+        transform.Rotate(0, 0, -fltsteerAmount);
     }
 }
